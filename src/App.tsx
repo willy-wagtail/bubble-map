@@ -17,11 +17,8 @@ export default function App() {
   }
 
   return (
-    <svg width={width} height={height}>
-      <PointsOnMap
-        worldAtlas={worldAtlas}
-        cities={cities}
-      />
+    <svg viewBox={`0 0 ${width} ${height}`}>
+      <PointsOnMap worldAtlas={worldAtlas} cities={cities} />
     </svg>
   );
 }
