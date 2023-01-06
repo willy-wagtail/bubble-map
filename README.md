@@ -1,6 +1,6 @@
 # Points on a map
 
-This repo contains code that creates a map using react, d3, topojson and geojson. Then data points are placed onto the map.
+This repo contains a data visualisation of the population of cities around the world >= 50,000. Each city is a point placed on a map of the world. The radius of the point is scaled to the population of that city. Tech used: react (and create-react-app), d3, topojson, geojson, and Github gist.
 
 # Notes
 
@@ -35,10 +35,14 @@ https://github.com/topojson/topojson#api-reference
 
 d3
 
-- [projections](https://github.com/d3/d3-geo/blob/v3.1.0/README.md#azimuthal-projections)
+- [projections](https://github.com/d3/d3-geo/blob/v3.1.0/README.md#projections)
   - e.g. geoEqualEarth, geoNaturalEarth1
+  - can take a longitude, latitude array in degrees and returns in pixels the x, y coordinates as an array.
 - [geoPath](https://github.com/d3/d3-geo/blob/v3.1.0/README.md#geoPath) creates a geographic path generator. Can specify a projection and context.
 - [geoGraticule](https://github.com/d3/d3-geo/blob/v3.1.0/README.md#geoGraticule) creates longitude and latitude line geometries
+- [scaleSqrt](https://github.com/d3/d3-scale/blob/v4.0.2/README.md#scaleSqrt)
+  - creates a new 0.5-power scale with passed in domain and range.
+  - e.g. used to map population size of a city to the size of the point on the map
 
 https://simplemaps.com/data/world-cities
 

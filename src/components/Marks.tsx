@@ -5,19 +5,25 @@ import "./Marks.css";
 import { WorldAtlasData } from "../hooks/useWorldAtlas";
 
 export type MarksProps = {
-  data: WorldAtlasData;
+  worldAtlas: WorldAtlasData;
+  cities: any;
+  sizeScale: any;
+  sizeValue: any;
 };
 
 const projection = geoNaturalEarth1();
 const path = geoPath(projection);
 const graticules = geoGraticule();
 
-export default function Marks({ data: { land, interiors } }: MarksProps) {
+export default function Marks({
+  worldAtlas: { land, interiors },
+  cities,
+  sizeScale,
+  sizeValue,
+}: MarksProps) {
   const globeOutlinePath = path({ type: "Sphere" });
   const interiorsPath = path(interiors);
   const graticulesPath = path(graticules());
-
-  console.log(land);
 
   return (
     <g className="marks">
@@ -46,6 +52,11 @@ export default function Marks({ data: { land, interiors } }: MarksProps) {
       {interiorsPath !== null ? (
         <path className="interiors" d={interiorsPath} />
       ) : null}
+
+      {cities.map((city: any) => {
+        const [x, y]: any = projection([city.lng, city.lat]);
+        return <circle cx={x} cy={y} r={sizeScale(sizeValue(city))} />;
+      })}
     </g>
   );
 }

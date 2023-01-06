@@ -14,6 +14,7 @@ const transform = (d: any) => ({
   ...d,
   lat: +d.lat,
   lng: +d.lng,
+  population: +d.population,
 });
 
 export const useWorldCities = () => {
