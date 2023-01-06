@@ -1,8 +1,7 @@
 import React from "react";
-import { scaleSqrt, max } from "d3";
 
 import "./App.css";
-import Marks from "./components/Marks";
+import PointsOnMap from "./components/PointsOnMap";
 import { useWorldAtlas } from "./hooks/useWorldAtlas";
 import { useWorldCities } from "./hooks/useWorldCities";
 
@@ -17,21 +16,11 @@ export default function App() {
     return <pre>Loading...</pre>;
   }
 
-  const sizeValue: any = (d: any) => d.population;
-
-  const maxRadius = 15;
-
-  const sizeScale = scaleSqrt()
-    .domain([0, max(cities, sizeValue) as any])
-    .range([0, maxRadius]);
-
   return (
     <svg width={width} height={height}>
-      <Marks
+      <PointsOnMap
         worldAtlas={worldAtlas}
         cities={cities}
-        sizeScale={sizeScale}
-        sizeValue={sizeValue}
       />
     </svg>
   );

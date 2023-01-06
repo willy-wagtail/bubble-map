@@ -1,29 +1,33 @@
 import React from "react";
-import { geoNaturalEarth1, geoPath, geoGraticule } from "d3";
+import { geoNaturalEarth1, geoPath, geoGraticule, scaleSqrt, max } from "d3";
 
-import "./Marks.css";
+import "./PointsOnMap.css";
 import { WorldAtlasData } from "../hooks/useWorldAtlas";
 
-export type MarksProps = {
+export type PointsOnMapProps = {
   worldAtlas: WorldAtlasData;
   cities: any;
-  sizeScale: any;
-  sizeValue: any;
 };
 
 const projection = geoNaturalEarth1();
 const path = geoPath(projection);
 const graticules = geoGraticule();
 
-export default function Marks({
+const graticulesPath = path(graticules());
+const globeOutlinePath = path({ type: "Sphere" });
+
+const pointSizeMaxRadius = 15;
+const pointSizeValueAccessor: any = (d: any) => d.population;
+
+export default function PointsOnMap({
   worldAtlas: { land, interiors },
   cities,
-  sizeScale,
-  sizeValue,
-}: MarksProps) {
-  const globeOutlinePath = path({ type: "Sphere" });
+}: PointsOnMapProps) {
   const interiorsPath = path(interiors);
-  const graticulesPath = path(graticules());
+
+  const pointSizeScale = scaleSqrt()
+    .domain([0, max(cities, pointSizeValueAccessor) as any])
+    .range([0, pointSizeMaxRadius]);
 
   return (
     <g className="marks">
@@ -55,7 +59,14 @@ export default function Marks({
 
       {cities.map((city: any) => {
         const [x, y]: any = projection([city.lng, city.lat]);
-        return <circle cx={x} cy={y} r={sizeScale(sizeValue(city))} />;
+
+        return (
+          <circle
+            cx={x}
+            cy={y}
+            r={pointSizeScale(pointSizeValueAccessor(city))}
+          />
+        );
       })}
     </g>
   );
