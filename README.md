@@ -26,3 +26,10 @@ https://github.com/topojson/topojson#api-reference
 - [mesh](https://github.com/topojson/topojson-client/blob/master/README.md#mesh) function is useful for rendering strokes in complicated objects efficiently, as shared edges are only stroked once.
   - A filter can be passed to prune arcs from the mesh
   - (e.g. remove strokes from the globe that borders the sea but keep those that border another country).
+
+d3
+
+- [projections](https://github.com/d3/d3-geo/blob/v3.1.0/README.md#azimuthal-projections)
+  - e.g. geoEqualEarth, geoNaturalEarth1
+- [geoPath](https://github.com/d3/d3-geo/blob/v3.1.0/README.md#geoPath) creates a geographic path generator. Can specify a projection and context.
+- [geoGraticule](https://github.com/d3/d3-geo/blob/v3.1.0/README.md#geoGraticule) creates longitude and latitude line geometries

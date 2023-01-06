@@ -12,3 +12,8 @@
   fill: none;
   stroke: #339498;
 }
+
+.marks .graticules {
+  fill: none;
+  stroke: #dadada;
+}

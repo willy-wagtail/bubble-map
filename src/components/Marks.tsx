@@ -1,5 +1,5 @@
 import React from "react";
-import { geoEqualEarth, geoPath } from "d3";
+import { geoNaturalEarth1, geoPath, geoGraticule } from "d3";
 
 import "./Marks.css";
 import { WorldAtlasData } from "../hooks/useWorldAtlas";
@@ -8,17 +8,23 @@ export type MarksProps = {
   data: WorldAtlasData;
 };
 
-const projection = geoEqualEarth();
+const projection = geoNaturalEarth1();
 const path = geoPath(projection);
+const graticules = geoGraticule();
 
 export default function Marks({ data: { land, interiors } }: MarksProps) {
   const globeOutlinePath = path({ type: "Sphere" });
   const interiorsPath = path(interiors);
+  const graticulesPath = path(graticules());
 
   return (
     <g className="marks">
       {globeOutlinePath !== null ? (
         <path className="globeOutline" d={globeOutlinePath} />
+      ) : null}
+
+      {graticulesPath !== null ? (
+        <path className="graticules" d={graticulesPath} />
       ) : null}
 
       {land.features.map((feature) => {
