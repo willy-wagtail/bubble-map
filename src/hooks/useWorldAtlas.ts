@@ -28,7 +28,7 @@ export const useWorldAtlas = () => {
         }
       })
       .catch((err) => {
-        console.error(err); // Handle non-2xx HTTP response status code
+        console.error(err);
       });
   }, []);
 

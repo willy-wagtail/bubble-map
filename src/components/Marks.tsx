@@ -17,6 +17,8 @@ export default function Marks({ data: { land, interiors } }: MarksProps) {
   const interiorsPath = path(interiors);
   const graticulesPath = path(graticules());
 
+  console.log(land);
+
   return (
     <g className="marks">
       {globeOutlinePath !== null ? (

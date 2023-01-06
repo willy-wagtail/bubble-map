@@ -1,4 +1,10 @@
+# Points on a map
+
+This repo contains code that creates a map using react, d3, topojson and geojson. Then data points are placed onto the map.
+
 # Notes
+
+https://www.youtube.com/watch?v=2LhoCfjm8R4
 
 https://github.com/topojson/world-atlas
 
@@ -33,3 +39,12 @@ d3
   - e.g. geoEqualEarth, geoNaturalEarth1
 - [geoPath](https://github.com/d3/d3-geo/blob/v3.1.0/README.md#geoPath) creates a geographic path generator. Can specify a projection and context.
 - [geoGraticule](https://github.com/d3/d3-geo/blob/v3.1.0/README.md#geoGraticule) creates longitude and latitude line geometries
+
+https://simplemaps.com/data/world-cities
+
+- download free version
+- preprocess data and upload onto github gist
+  - exclude cities smaller than 50,000
+  - remove all rows except city, lat, lng, country, population
+
+https://gist.github.com/willy-wagtail/8e035ecce41d12c98dbbdb33e42e89f4
