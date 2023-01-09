@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { geoNaturalEarth1, geoPath, geoGraticule, scaleSqrt, max } from "d3";
 
-import "./PointsOnMap.css";
+import "./BubbleMap.css";
 import { WorldAtlasData } from "../hooks/useWorldAtlas";
 import { City } from "../hooks/useWorldCities";
 
