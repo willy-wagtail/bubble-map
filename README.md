@@ -1,4 +1,4 @@
-# Points on a map
+# Bubble map
 
 This repo contains a data visualisation of the population of cities around the world >= 50,000. Each city is a point placed on a map of the world. The radius of the point is scaled to the population of that city. Tech used: react (and create-react-app), d3, topojson, geojson, and Github gist.
 
