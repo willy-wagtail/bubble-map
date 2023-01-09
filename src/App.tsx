@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 
 import "./App.css";
-import PointsOnMap from "./components/PointsOnMap";
+import BubbleMap from "./components/BubbleMap";
 import { useWorldAtlas } from "./hooks/useWorldAtlas";
 import { useWorldCities } from "./hooks/useWorldCities";
 
@@ -18,7 +18,7 @@ const App: FC = () => {
 
   return (
     <svg viewBox={`0 0 ${width} ${height}`} width={width} height={height}>
-      <PointsOnMap worldAtlas={worldAtlas} cities={cities} />
+      <BubbleMap worldAtlas={worldAtlas} cities={cities} />
     </svg>
   );
 };

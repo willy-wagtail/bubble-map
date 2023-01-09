@@ -5,7 +5,7 @@ import "./PointsOnMap.css";
 import { WorldAtlasData } from "../hooks/useWorldAtlas";
 import { City } from "../hooks/useWorldCities";
 
-export type PointsOnMapProps = {
+export type BubbleMapProps = {
   worldAtlas: WorldAtlasData;
   cities: City[];
 };
@@ -21,7 +21,7 @@ const pointSizeMaxRadius = 15;
 const pointSizeMaxDomain = 50000000;
 const population = (d: City) => d.population;
 
-const PointsOnMap: FC<PointsOnMapProps> = ({
+const BubbleMap: FC<BubbleMapProps> = ({
   worldAtlas: { land, interiors },
   cities,
 }) => {
@@ -75,4 +75,4 @@ const PointsOnMap: FC<PointsOnMapProps> = ({
   );
 };
 
-export default PointsOnMap;
+export default BubbleMap;
