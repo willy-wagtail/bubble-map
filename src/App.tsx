@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 
 import "./App.css";
 import PointsOnMap from "./components/PointsOnMap";
@@ -8,7 +8,7 @@ import { useWorldCities } from "./hooks/useWorldCities";
 const width = 960;
 const height = 500;
 
-export default function App() {
+const App: FC = () => {
   const worldAtlas = useWorldAtlas();
   const cities = useWorldCities();
 
@@ -21,4 +21,6 @@ export default function App() {
       <PointsOnMap worldAtlas={worldAtlas} cities={cities} />
     </svg>
   );
-}
+};
+
+export default App;

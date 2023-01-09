@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { geoNaturalEarth1, geoPath, geoGraticule, scaleSqrt, max } from "d3";
 
 import "./PointsOnMap.css";
@@ -21,10 +21,10 @@ const pointSizeMaxRadius = 15;
 const pointSizeMaxDomain = 50000000;
 const population = (d: City) => d.population;
 
-export default function PointsOnMap({
+const PointsOnMap: FC<PointsOnMapProps> = ({
   worldAtlas: { land, interiors },
   cities,
-}: PointsOnMapProps) {
+}) => {
   const interiorsPath = path(interiors);
 
   const maxDomain = max(cities, population) || pointSizeMaxDomain;
@@ -43,17 +43,19 @@ export default function PointsOnMap({
         <path className="graticules" d={graticulesPath} />
       ) : null}
 
-      {land.features.map((feature) => {
+      {land.features.map((feature, index) => {
         const pathD = path(feature);
 
-        return pathD !== null ? <path className="land" d={pathD} /> : null;
+        return pathD !== null ? (
+          <path key={index} className="land" d={pathD} />
+        ) : null;
       })}
 
       {interiorsPath !== null ? (
         <path className="interiors" d={interiorsPath} />
       ) : null}
 
-      {cities.map((city) => {
+      {cities.map((city, index) => {
         const xyCoordinates = projection([city.lng, city.lat]);
 
         if (xyCoordinates === null) {
@@ -62,6 +64,7 @@ export default function PointsOnMap({
 
         return (
           <circle
+            key={index}
             cx={xyCoordinates[0]}
             cy={xyCoordinates[1]}
             r={pointSizeScale(population(city))}
@@ -70,4 +73,6 @@ export default function PointsOnMap({
       })}
     </g>
   );
-}
+};
+
+export default PointsOnMap;
